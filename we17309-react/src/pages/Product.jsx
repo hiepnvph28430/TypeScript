@@ -6,13 +6,7 @@ const ProductPage = (props) => {
         setData(props.products)
     }, [props])
     const removeProduct = (id) => {
-        const confirm = window.confirm("Bạn có chắc muốn xóa không")
-        if (confirm) {
-            fetch("http://localhost:3000/products/" + id, {
-                method: 'DELETE'
-            })
-                .then(() => setData(data.filter(product => product.id !== id)))
-        }
+        props.onRemove(id)
 
     }
     return (
