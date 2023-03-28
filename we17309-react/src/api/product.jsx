@@ -9,4 +9,10 @@ const getProduct = (id) => {
 const deleteProduct = (id) => {
     return instance.delete(`/products/` + id);
 }
-export { getAllProduct, getProduct, deleteProduct }
+const addProduct = (product) => {
+    return instance.post("/products", product)
+}
+const updateProduct = (product) => {
+    return instance.patch("/products/" + product.id, product)
+}
+export { getAllProduct, getProduct, deleteProduct, addProduct, updateProduct }

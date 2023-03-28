@@ -1,8 +1,9 @@
 {
   "products": [
     {
-      "id": 2,
-      "name": "Product B"
+      "name": "php update",
+      "price": "888881111111111111",
+      "id": 14
     }
   ]
 }

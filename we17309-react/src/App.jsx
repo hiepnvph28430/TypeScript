@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from "react-router-dom"
-import { getAllProduct, deleteProduct } from './api/product'
-import reactLogo from './assets/react.svg'
+import { getAllProduct, deleteProduct, addProduct, updateProduct } from './api/product'
+import AddProductPage from './pages/admin/AddProduct'
+import Dashboard from './pages/admin/Dashboard'
+import ProductManagementPage from './pages/admin/ProductManagement'
+import UpdateProductPage from './pages/admin/UpdateProduct'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/Product'
 import ProductDetailPage from './pages/ProductDetail'
@@ -26,7 +29,12 @@ function App() {
       deleteProduct(id).then(() => setProduct(products.filter(product => product.id !== id)))
     }
   }
-
+  const onHandleAdd = (product) => {
+    addProduct(product).then(() => setProduct([...products, product]))
+  }
+  const onHandleUpdate = (product) => {
+    updateProduct(product).then(() => setProduct(products.map(item => item.id === product.id ? product : item)))
+  }
   return (
     <div className="App">
 
@@ -34,6 +42,10 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/products' element={<ProductPage products={products} onRemove={onHandleRemove} />} />
         <Route path='/products/:id' element={<ProductDetailPage />} />
+        <Route path='/admin' element={<Dashboard />} />
+        <Route path='/admin/products' element={<ProductManagementPage products={products} onRemove={onHandleRemove} />} />
+        <Route path='/admin/products/add' element={<AddProductPage onAdd={onHandleAdd} />} />
+        <Route path='/admin/products/:id/update' element={<UpdateProductPage products={products} onUpdate={onHandleUpdate} />} />
       </Routes>
     </div>
   )
