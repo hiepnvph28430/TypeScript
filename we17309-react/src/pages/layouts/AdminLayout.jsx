@@ -4,7 +4,9 @@ import { Outlet } from 'react-router-dom'
 const AdminLayout = () => {
     return (
         <div>
-            <aside></aside>
+            <aside>
+                <img src="https://picsum.photos/300/300" alt="" />
+            </aside>
             <main>
                 <Outlet />
             </main>

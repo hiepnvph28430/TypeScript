@@ -51,6 +51,7 @@ function App() {
           <Route path='products'>
             <Route index element={<ProductManagementPage products={products} onRemove={onHandleRemove} />} />
             <Route path='add' element={<AddProductPage onAdd={onHandleAdd} />} />
+            <Route path=':id/update' element={<UpdateProductPage products={products} onUpdate={onHandleUpdate} />} />
           </Route>
         </Route>
       </Routes>
